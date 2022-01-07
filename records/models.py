@@ -6,7 +6,7 @@ class Property(models.Model):
 
     type = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
-    value = models.FloatField()
+    value = models.CharField(max_length=15)
 
     def __str__(self):
         return self.type
@@ -18,8 +18,8 @@ class Property(models.Model):
 class Client(models.Model):
 
     name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-    phone = models.CharField(max_length=100)
+    email = models.CharField(max_length=50)
+    phone = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name
@@ -30,10 +30,8 @@ class Rent(models.Model):
     end = models.DateField()
 
     client = models.ForeignKey(Client, on_delete=models.PROTECT)
-    property = models.ForeignKey(Property, on_delete=models.PROTECT)
-
-    description = 'Current Rent - ', client.name
+    property = models.OneToOneField(Property, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.description
+        return self.property.type
 
