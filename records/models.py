@@ -1,10 +1,10 @@
 from django.db import models
 from cpf_field.models import CPFField
 
+
 # Create your models here.
 
 class Property(models.Model):
-
     type = models.CharField(max_length=100)
     address = models.CharField(max_length=150, unique=True)
     value = models.CharField(max_length=20)
@@ -18,8 +18,8 @@ class Property(models.Model):
     def __str__(self):
         return str(self._get_pk_val()) + ' - ' + self.type + ' | ' + self.address
 
-class Client(models.Model):
 
+class Client(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=35)
@@ -33,8 +33,8 @@ class Client(models.Model):
     def __str__(self):
         return self.name
 
-class Rent(models.Model):
 
+class Rent(models.Model):
     start = models.DateField()
     end = models.DateField()
     finished = models.BooleanField(default=False, help_text='Check')
@@ -49,6 +49,5 @@ class Rent(models.Model):
         verbose_name_plural = 'Rents'
 
     def __str__(self):
-        return  'Contrato ' + str(self._get_pk_val()) + ': ' + self.property.type + ' | ' + self.client.name + ' - ' + str(self.finished)
-
-
+        return 'Contrato ' + str(
+            self._get_pk_val()) + ': ' + self.property.type + ' | ' + self.client.name + ' - ' + str(self.finished)
