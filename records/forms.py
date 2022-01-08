@@ -1,6 +1,6 @@
 from django import forms
 
-from records.models import Client, Property, Rent
+from records.models import Property, Client, Rent
 
 
 class PropertyForm(forms.ModelForm):
