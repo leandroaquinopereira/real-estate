@@ -1,10 +1,10 @@
-{% extends 'base_clients.html' %}
+{% extends 'base.html' %}
 
 {% block contents %}
 
-    <h4>New Client:</h4>
+    <h4>New Property:</h4>
 
-    <form action="{% url 'client-create' %}" method="POST">
+    <form action="{% url 'property-create' %}" method="POST">
 
         {% csrf_token %}
 
