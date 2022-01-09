@@ -5,9 +5,46 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, DeleteView, CreateView, UpdateView
 
-from records.forms import ClientForm
-from records.models import Client
+from records.forms import ClientForm, PropertyForm
+from records.models import Client, Property
 
+
+# Property
+
+class PropertyList(ListView):
+    queryset = Property.objects.all().order_by('type')
+    context_object_name = 'property'
+    template_name = 'records/list_properties.html'
+
+
+class PropertyDetail(DetailView):
+    queryset = Property.objects.all()
+    context_object_name = 'property'
+    template_name = 'records/detail_properties.html'
+
+
+class PropertyDelete(DeleteView):
+    model = Property
+    context_object_name = 'property'
+    template_name = 'records/delete_properties.html'
+    success_url = reverse_lazy('property-list')
+
+
+class PropertyCreate(CreateView):
+    model = Property
+    form_class = PropertyForm
+    template_name = 'records/create_properties.html'
+    success_url = reverse_lazy('property-list')
+
+
+class PropertyUpdate(UpdateView):
+    model = Property
+    form_class = PropertyForm
+    template_name = 'records/update_properties.html'
+    success_url = reverse_lazy('property-list')
+
+
+# Client
 
 class ClientList(ListView):
     queryset = Client.objects.all().order_by('name')
@@ -35,9 +72,8 @@ class ClientCreate(CreateView):
     success_url = reverse_lazy('client-list')
 
 
-class ClientUpdate(UpdateView, SuccessMessageMixin):
+class ClientUpdate(UpdateView):
     model = Client
     form_class = ClientForm
     template_name = 'records/update_clients.html'
     success_url = reverse_lazy('client-list')
-    success_message = '!Cadastro Atualizado com Sucesso!'
