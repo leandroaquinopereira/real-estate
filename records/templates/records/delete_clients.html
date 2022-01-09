@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_clients.html' %}
 
-</body>
-</html>
+{% block contents %}
+
+    <h4>Client Delete</h4>
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>Are you sure that want to delete "{{ client }}"?</p>
+        <input type="submit" class="btn btn-danger" value="Yes">
+    </form>
+
+{% endblock %}

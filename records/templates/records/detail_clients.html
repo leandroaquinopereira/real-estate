@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_clients.html' %}
 
-</body>
-</html>
+{% block contents %}
+
+    <h4>Client Detail</h4>
+    <p>Nome: {{ client.name }}</p>
+    <p>E-Mail: {{ client.email|default_if_none:'-' }}</p>
+    <p>Phone: {{ client.phone }}</p>
+
+    <div class="col-12">
+        {% if request.user.is_authenticated %}
+            <a class="btn btn-danger" href="{% url 'client-delete' client.id %}">Delete</a>
+            <a class="btn btn-info" href="{% url 'client-update' client.id %}">Edit</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

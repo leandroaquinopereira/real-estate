@@ -9,14 +9,7 @@ from records.forms import ClientForm
 from records.models import Client
 
 
-class BaseListView(ListView):
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['titulo'] = 'INATEL'
-        return context
-
-
-class ClientList(BaseListView):
+class ClientList(ListView):
     queryset = Client.objects.all().order_by('name')
     context_object_name = 'client'
     template_name = 'records/list_clients.html'
