@@ -82,13 +82,13 @@ class ClientUpdate(UpdateView):
 # Rent
 
 class RentList(ListView):
-    queryset = Client.objects.all().order_by('id')
+    queryset = Rent.objects.all().order_by('id')
     context_object_name = 'rent'
     template_name = 'records/list_rents.html'
 
 
 class RentDetail(DetailView):
-    queryset = Client.objects.all()
+    queryset = Rent.objects.all()
     context_object_name = 'rent'
     template_name = 'records/detail_rents.html'
 
