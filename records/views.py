@@ -5,8 +5,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, DeleteView, CreateView, UpdateView
 
-from records.forms import ClientForm, PropertyForm
-from records.models import Client, Property
+from records.forms import ClientForm, PropertyForm, RentForm
+from records.models import Client, Property, Rent
 
 
 # Property
@@ -77,3 +77,38 @@ class ClientUpdate(UpdateView):
     form_class = ClientForm
     template_name = 'records/update_clients.html'
     success_url = reverse_lazy('client-list')
+
+
+# Rent
+
+class RentList(ListView):
+    queryset = Client.objects.all().order_by('id')
+    context_object_name = 'rent'
+    template_name = 'records/list_rents.html'
+
+
+class RentDetail(DetailView):
+    queryset = Client.objects.all()
+    context_object_name = 'rent'
+    template_name = 'records/detail_rents.html'
+
+
+class RentDelete(DeleteView):
+    model = Rent
+    context_object_name = 'rent'
+    template_name = 'records/delete_rents.html'
+    success_url = reverse_lazy('rent-list')
+
+
+class RentCreate(CreateView):
+    model = Rent
+    form_class = RentForm
+    template_name = 'records/create_rents.html'
+    success_url = reverse_lazy('rent-list')
+
+
+class RentUpdate(UpdateView):
+    model = Rent
+    form_class = RentForm
+    template_name = 'records/update_rents.html'
+    success_url = reverse_lazy('rent-list')

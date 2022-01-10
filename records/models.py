@@ -5,6 +5,13 @@ from cpf_field.models import CPFField
 # Create your models here.
 
 class Property(models.Model):
+
+    # class Month(models.TextChoices):
+    #     Apartamento = '1', "JANUARY"
+    #     Casa = '2', "FEBRUARY"
+    #     MAR = '3', "MAR"
+    #     # (...)
+
     type = models.CharField(max_length=100)
     address = models.CharField(max_length=150, unique=True)
     value = models.CharField(max_length=20)
@@ -37,12 +44,9 @@ class Client(models.Model):
 class Rent(models.Model):
     start = models.DateField()
     end = models.DateField()
-    finished = models.BooleanField(default=False, help_text='Check')
 
     client = models.ForeignKey(Client, on_delete=models.PROTECT, null=True, blank=False)
     property = models.OneToOneField(Property, on_delete=models.PROTECT, null=True, blank=False)
-
-    property.rented = True
 
     class Meta:
         verbose_name = 'Rent'
@@ -50,4 +54,4 @@ class Rent(models.Model):
 
     def __str__(self):
         return 'Contrato ' + str(
-            self._get_pk_val()) + ': ' + self.property.type + ' | ' + self.client.name + ' - ' + str(self.finished)
+            self._get_pk_val()) + ': ' + self.property.type + ' | ' + self.client.name
