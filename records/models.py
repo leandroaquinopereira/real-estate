@@ -6,13 +6,13 @@ from cpf_field.models import CPFField
 
 class Property(models.Model):
 
-    # class Month(models.TextChoices):
-    #     Apartamento = '1', "JANUARY"
-    #     Casa = '2', "FEBRUARY"
-    #     MAR = '3', "MAR"
-    #     # (...)
+    type_choice = (
+        ('Apartment', 'Apartment'),
+        ('Kitnet', 'Kitnet'),
+        ('House', 'House'),
+    )
 
-    type = models.CharField(max_length=100)
+    type = models.CharField(max_length=10, choices=type_choice)
     address = models.CharField(max_length=150, unique=True)
     value = models.CharField(max_length=20)
     description = models.CharField(max_length=200)
