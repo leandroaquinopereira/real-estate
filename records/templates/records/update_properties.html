@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block contents %}
 
     <h4>Property Edit:</h4>
@@ -8,7 +10,7 @@
 
         {% csrf_token %}
 
-        {{ form.as_p }}
+        {{ form|crispy }}
 
         <div class="col-12" align="center">
             <button class="btn btn-primary" type="submit">Edit</button>
