@@ -1,4 +1,3 @@
 django
 django-cpf
 django-crispy-forms
-django-filter
