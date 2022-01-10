@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+    <h4>Rents</h4>
+    <ul class="list-group">
+        {% for rent in object_list %}
+        <a class="list-group-item list-group" href="{% url 'rent-detail' rent.id  %}">{{ rent }}</a>
+        {% endfor %}
+    </ul>
+
+    <div class="col-12" align="left">
+        {% if request.user.is_authenticated %}
+            <br><a class="btn btn-primary" href="{% url 'rent-create' %}">New Rent</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

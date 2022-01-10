@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+    <h4>New Rent:</h4>
+
+    <form action="{% url 'rent-create' %}" method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <div class="col-12" align="center">
+            <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+
+    </form>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+    <h4>Rent Delete</h4>
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>Are you sure that want to delete "{{ rent }}"?</p>
+        <input type="submit" class="btn btn-danger" value="Yes">
+    </form>
+
+{% endblock %}

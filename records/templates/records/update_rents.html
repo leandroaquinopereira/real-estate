@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+    <h4>Rent Edit:</h4>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <div class="col-12" align="center">
+            <button class="btn btn-primary" type="submit">Edit</button>
+        </div>
+
+    </form>
+
+{% endblock %}
