@@ -2,12 +2,12 @@
 
 {% block contents %}
 
-    <h4>Client Detail</h4>
+    <h4 class="mt-3" align="center">Client Detail</h4>
     <p>Nome: {{ client.name }}</p>
     <p>E-Mail: {{ client.email|default_if_none:'-' }}</p>
     <p>Phone: {{ client.phone }}</p>
 
-    <div class="col-12">
+    <div class="col-12 mt-3">
         {% if request.user.is_authenticated %}
             <a class="btn btn-danger" href="{% url 'client-delete' client.id %}">Delete</a>
             <a class="btn btn-info" href="{% url 'client-update' client.id %}">Edit</a>

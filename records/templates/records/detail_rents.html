@@ -2,13 +2,13 @@
 
 {% block contents %}
 
-    <h4>Rent Detail</h4>
+    <h4 class="mt-3" align="center">Rent Detail</h4>
     <p>Start: {{ rent.start }}</p>
     <p>End: {{ rent.end }}</p>
     <p>Client: {{ rent.client }}</p>
     <p>Property: {{ rent.property }}</p>
 
-    <div class="col-12">
+    <div class="col-12 mt-3">
         {% if request.user.is_authenticated %}
             <a class="btn btn-danger" href="{% url 'rent-delete' rent.id %}">Delete</a>
             <a class="btn btn-info" href="{% url 'rent-update' rent.id %}">Edit</a>

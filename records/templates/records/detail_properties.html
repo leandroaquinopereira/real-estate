@@ -2,7 +2,7 @@
 
 {% block contents %}
 
-    <h4>Property Detail</h4>
+    <h4 class="mt-3" align="center">Property Detail</h4>
     <p>Type: {{ property.type }}</p>
     <p>Address: {{ property.address }}</p>
     <p>Value: {{ property.value }}</p>
@@ -13,7 +13,7 @@
         {% endif %}
     </p>
 
-    <div class="col-12">
+    <div class="col-12 mt-3">
         {% if request.user.is_authenticated %}
             <a class="btn btn-danger" href="{% url 'property-delete' property.id %}">Delete</a>
             <a class="btn btn-info" href="{% url 'property-update' property.id %}">Edit</a>
