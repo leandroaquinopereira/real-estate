@@ -16,6 +16,16 @@ class PropertyList(ListView):
     context_object_name = 'property'
     template_name = 'records/list_properties.html'
 
+    def get_queryset(self):
+
+        txt_type = self.request.GET.get('type')
+
+        if txt_type:
+            property = Property.objects.filter(type__icontains=txt_type)
+        else:
+            property = Property.objects.all()
+        return property
+
 
 class PropertyDetail(DetailView):
     queryset = Property.objects.all()

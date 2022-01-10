@@ -22,5 +22,5 @@ urlpatterns = [
     path('rent/detail/<int:pk>/', RentDetail.as_view(), name='rent-detail'),
     path('rent/delete/<int:pk>/', login_required(RentDelete.as_view()), name='rent-delete'),
     path('rent/create/', login_required(RentCreate.as_view()), name='rent-create'),
-    path('rent/update/<int:pk>/', login_required(RentUpdate.as_view()), name='rent-update')
+    path('rent/update/<int:pk>/', login_required(RentUpdate.as_view()), name='rent-update'),
 ]

@@ -53,5 +53,4 @@ class Rent(models.Model):
         verbose_name_plural = 'Rents'
 
     def __str__(self):
-        return 'Contrato ' + str(
-            self._get_pk_val()) + ': ' + self.property.type + ' | ' + self.client.name
+        return str(self._get_pk_val()) + ' - ' + self.property.type + ' | ' + self.client.name
