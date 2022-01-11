@@ -17,7 +17,11 @@ Project developed as a technical challenge for the position of Software Develope
 
 ``` python manage.py createsuperuser ```
 
-The application has authentication requirements associated with the username and password created when running the previous command.
+- Running the application:
+
+``` python manage.py runserver ```
+
+The application has authentication requirements associated with the username and password created when running the previous command (createsuperuser).
 
 - Recommended website for CPF field validation: https://bit.ly/3FdAUW2
 
